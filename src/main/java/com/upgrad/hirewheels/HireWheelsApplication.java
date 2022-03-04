@@ -5,16 +5,18 @@ import com.upgrad.hirewheels.entities.Booking;
 import com.upgrad.hirewheels.entities.User;
 import com.upgrad.hirewheels.entities.Vehicle;
 import com.upgrad.hirewheels.services.*;
+import org.modelmapper.ModelMapper;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDateTime;
 import java.util.Date;
 
-
+@RestController
 @SpringBootApplication
 public class HireWheelsApplication {
 
@@ -68,6 +70,11 @@ public class HireWheelsApplication {
 		return args -> {
 			initService.start();
 		};
+	}
+
+	@Bean
+	public ModelMapper modelMapper(){
+		return new ModelMapper();
 	}
 
 }
